@@ -9,4 +9,5 @@ interface API {
 
     @POST("auth/authenticate")
     fun login(username: String, password: String) : Result<LoggedInUser>
+
 }

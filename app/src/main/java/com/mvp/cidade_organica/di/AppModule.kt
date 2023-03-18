@@ -15,7 +15,7 @@ object AppModule {
     val module = module {
         single<Retrofit> {
             Retrofit.Builder()
-                .baseUrl(BuildConfig.SERVER_URL)
+                .baseUrl("http://localhost:8080")
                 .addConverterFactory(MoshiConverterFactory.create(get()))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(get())

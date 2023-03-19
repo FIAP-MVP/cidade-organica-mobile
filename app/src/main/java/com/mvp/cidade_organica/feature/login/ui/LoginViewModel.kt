@@ -7,9 +7,11 @@ import android.util.Patterns
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.viewModelScope
 import com.mvp.cidade_organica.R
 import com.mvp.cidade_organica.feature.login.data.LoginRepository
 import com.mvp.cidade_organica.feature.login.data.Result
+import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -21,14 +23,15 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun login(username: String, password: String) {
         if (validateCredentials(username, password)) {
+            viewModelScope.launch {
+                val result = loginRepository.login(username, password)
 
-            val result = loginRepository.login(username, password)
-
-            if (result is Result.Success) {
-                _loginResult.value =
-                    LoginResult.Success(LoggedInUserView(displayName = result.data.displayName))
-            } else {
-                _loginResult.value = LoginResult.Error(R.string.login_failed)
+                if (result is Result.Success) {
+                    _loginResult.value =
+                        LoginResult.Success(LoggedInUserView(displayName = result.data.displayName))
+                } else {
+                    _loginResult.value = LoginResult.Error(R.string.login_failed)
+                }
             }
         }
     }
@@ -56,6 +59,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+        return password.length >= 5
     }
 }

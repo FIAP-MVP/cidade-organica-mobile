@@ -22,8 +22,8 @@ import org.koin.androidx.compose.getViewModel
 fun LoginScreen(viewModel: LoginViewModel = getViewModel()) {
     var usernameValue by remember { mutableStateOf(TextFieldValue("")) }
     var passwordValue by remember { mutableStateOf(TextFieldValue("")) }
-    Column(modifier = Modifier.padding(16.dp)) {
 
+    Column(modifier = Modifier.padding(16.dp)) {
         TextField(
             value = usernameValue,
             onValueChange = { usernameValue = it },
@@ -58,30 +58,34 @@ fun LoginScreen(viewModel: LoginViewModel = getViewModel()) {
         }
     }
 
+
     when (viewModel.loginResult.value) {
 
         is LoginResult.Error -> {
-            Snackbar(
-                content = { Text(text = "Falhou") },
-                action = {
-                    Text(text = "OK",
-                        style = TextStyle(color = MaterialTheme.colors.secondary)
-                    )
-                }
-            )
+//            Snackbar(
+//                modifier = Modifier.height(46.dp),
+//                content = { Text(text = "Falhou") },
+//                action = {
+//                    Text(text = "OK",
+//                        style = TextStyle(color = MaterialTheme.colors.secondary)
+//                    )
+//                }
+//            )
         }
         is LoginResult.Success -> {
-            Snackbar(
-                content = { Text(text = "Sucesso") },
-                action = {
-                    Text(text = "OK",
-                        style = TextStyle(color = MaterialTheme.colors.secondary)
-                    )
-                }
-            )
+//            Snackbar(
+//
+//                content = { Text(text = "Sucesso") },
+//                action = {
+//                    Text(text = "OK",
+//                        style = TextStyle(color = MaterialTheme.colors.secondary)
+//                    )
+//                }
+//            )
         }
         else -> {}
     }
+
 }
 
 

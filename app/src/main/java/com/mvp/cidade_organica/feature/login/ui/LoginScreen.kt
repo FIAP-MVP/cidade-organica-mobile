@@ -62,26 +62,9 @@ fun LoginScreen(viewModel: LoginViewModel = getViewModel()) {
     when (viewModel.loginResult.value) {
 
         is LoginResult.Error -> {
-//            Snackbar(
-//                modifier = Modifier.height(46.dp),
-//                content = { Text(text = "Falhou") },
-//                action = {
-//                    Text(text = "OK",
-//                        style = TextStyle(color = MaterialTheme.colors.secondary)
-//                    )
-//                }
-//            )
+
         }
         is LoginResult.Success -> {
-//            Snackbar(
-//
-//                content = { Text(text = "Sucesso") },
-//                action = {
-//                    Text(text = "OK",
-//                        style = TextStyle(color = MaterialTheme.colors.secondary)
-//                    )
-//                }
-//            )
         }
         else -> {}
     }

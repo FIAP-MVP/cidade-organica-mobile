@@ -11,7 +11,6 @@ interface API {
     fun login(username: String, password: String) : Result<LoggedInUser>
 
     @POST("/auth/register")
-    fun register(name: String, lastname: String, cpf: String, email: String, phone: String, password: String): Result<LoggedInUser>
-
+    fun register(name: String, lastName: String, cpf: String, email: String, phone: String, password: String): Result<LoggedInUser>
 
 }

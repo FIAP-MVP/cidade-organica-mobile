@@ -8,7 +8,9 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mvp.cidade_organica.feature.login.ui.LoginScreen
+import androidx.navigation.compose.rememberNavController
+import com.mvp.cidade_organica.Navigation
+import com.mvp.cidade_organica.feature.login.ui.SignInScreen
 import com.mvp.cidade_organica.ui.theme.Cidade_OrganicaTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,28 +18,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Cidade_OrganicaTheme {
+
                 Scaffold(content = { _ ->
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-                        LoginScreen()
+                        val navController = rememberNavController()
+                        Navigation(navController)
                     }
                 })
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    Cidade_OrganicaTheme {
-        Greeting("Android")
     }
 }

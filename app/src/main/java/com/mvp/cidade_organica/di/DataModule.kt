@@ -13,9 +13,7 @@ object DataModule {
         }
 
         single {
-            LoginDataSource(api = get())
+            LoginDataSource(api = get(), sharedPreferences = get())
         }
     }
-
-
 }

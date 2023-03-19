@@ -1,25 +1,23 @@
 package com.mvp.cidade_organica.feature.login.ui
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.InternalTextApi
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.mvp.cidade_organica.Screen
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = getViewModel()) {
+fun SignInScreen(viewModel: LoginViewModel = getViewModel(), navController: NavHostController) {
     var usernameValue by remember { mutableStateOf(TextFieldValue("")) }
     var passwordValue by remember { mutableStateOf(TextFieldValue("")) }
 
@@ -62,18 +60,12 @@ fun LoginScreen(viewModel: LoginViewModel = getViewModel()) {
     when (viewModel.loginResult.value) {
 
         is LoginResult.Error -> {
-
         }
         is LoginResult.Success -> {
+            navController.navigate(Screen.Home.route)
+
         }
         else -> {}
     }
 
-}
-
-
-@Preview
-@Composable
-fun preview() {
-    LoginScreen()
 }

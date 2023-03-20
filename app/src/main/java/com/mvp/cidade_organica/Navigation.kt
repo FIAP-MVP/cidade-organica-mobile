@@ -9,7 +9,7 @@ import com.mvp.cidade_organica.feature.signup.SignUpScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = Screen.SignIn.route) {
+    NavHost(navController, startDestination = Screen.SignUp.route) {
         composable(route = Screen.SignIn.route) { SignInScreen(navController = navController) }
         composable(route = Screen.SignUp.route) { SignUpScreen(navController = navController) }
         composable(route = Screen.Home.route) { SignUpScreen(navController = navController) }

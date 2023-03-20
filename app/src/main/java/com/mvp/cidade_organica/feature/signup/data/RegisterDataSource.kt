@@ -1,5 +1,6 @@
-package com.mvp.cidade_organica.feature.login.data
+package com.mvp.cidade_organica.feature.signup.data
 
+import com.mvp.cidade_organica.Result
 import com.mvp.cidade_organica.feature.login.data.model.LoggedInUser
 import com.mvp.cidade_organica.network.API
 import java.io.IOException
@@ -12,8 +13,5 @@ class RegisterDataSource(private val api: API) {
         } catch (e: Throwable) {
             Result.Error(IOException("Error logging in", e))
         }
-    }
-
-    fun logout() {
     }
 }

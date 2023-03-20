@@ -1,4 +1,4 @@
-package com.mvp.cidade_organica.feature.signup
+package com.mvp.cidade_organica.feature.signup.ui
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping

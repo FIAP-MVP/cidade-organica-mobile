@@ -1,4 +1,4 @@
-package com.mvp.cidade_organica.feature.signup
+package com.mvp.cidade_organica.feature.signup.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -14,9 +14,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.mvp.cidade_organica.feature.signup.SignUpDefaults.DOCUMENT_MASK
-import com.mvp.cidade_organica.feature.signup.SignUpDefaults.INPUT_LENGTH
-import com.mvp.cidade_organica.feature.signup.SignUpDefaults.PHONE_MASK
+import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.DOCUMENT_MASK
+import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.INPUT_LENGTH
+import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.PHONE_MASK
 import com.mvp.cidade_organica.ui.theme.Teal200
 
 @Composable

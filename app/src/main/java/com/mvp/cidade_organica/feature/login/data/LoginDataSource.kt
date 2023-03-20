@@ -1,6 +1,7 @@
 package com.mvp.cidade_organica.feature.login.data
 
 import android.content.SharedPreferences
+import com.mvp.cidade_organica.Result
 import com.mvp.cidade_organica.feature.login.data.model.LoggedInUser
 import com.mvp.cidade_organica.feature.login.data.model.LoginRequest
 import com.mvp.cidade_organica.feature.login.data.model.LoginResponse

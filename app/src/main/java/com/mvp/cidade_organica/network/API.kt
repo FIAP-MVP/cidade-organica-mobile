@@ -1,7 +1,7 @@
 package com.mvp.cidade_organica.network
 
 import com.mvp.cidade_organica.feature.login.data.model.LoggedInUser
-import com.mvp.cidade_organica.feature.login.data.Result
+import com.mvp.cidade_organica.Result
 import com.mvp.cidade_organica.feature.login.data.model.LoginRequest
 import com.mvp.cidade_organica.feature.login.data.model.LoginResponse
 import retrofit2.Response

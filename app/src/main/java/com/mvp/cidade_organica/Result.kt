@@ -1,4 +1,4 @@
-package com.mvp.cidade_organica.feature.login.data
+package com.mvp.cidade_organica
 
 sealed class Result<out T : Any> {
 

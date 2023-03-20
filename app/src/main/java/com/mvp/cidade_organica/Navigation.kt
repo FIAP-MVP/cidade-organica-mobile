@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mvp.cidade_organica.feature.login.ui.SignInScreen
-import com.mvp.cidade_organica.feature.signup.SignUpScreen
+import com.mvp.cidade_organica.feature.signup.ui.SignUpScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {

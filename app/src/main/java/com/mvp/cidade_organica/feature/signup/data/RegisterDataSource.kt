@@ -16,7 +16,11 @@ class RegisterDataSource(private val api: API, private val tokenRepository: Toke
         return try {
             val result = api.register(name)
             saveUserToken(result)
-            Result.Success(LoggedInUser(userId = "abc123", "USUARIO"))
+            if (result.body() != null){
+                Result.Success(LoggedInUser(userId = "abc123", result.body()!!.name))
+            } else {
+                Result.Error(Exception())
+            }
         } catch (e: Throwable) {
             Result.Error(IOException("Error Registering user", e))
         }

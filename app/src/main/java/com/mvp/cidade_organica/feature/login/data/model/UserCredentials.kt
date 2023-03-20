@@ -8,5 +8,6 @@ data class LoginRequest(
 )
 
 data class TokenResponse(
-    @Json(name = "token") val token : String
+    @Json(name = "name") val name: String,
+    @Json(name = "token") val token: String
 )

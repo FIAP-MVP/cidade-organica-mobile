@@ -15,7 +15,12 @@ class LoginDataSource(private val api: API, private val tokenRepository: TokenRe
         return try {
             val result = api.login(LoginRequest(username, password))
             saveUserToken(result)
-            Result.Success(LoggedInUser(userId = "abc123", "USUARIO"))
+
+            if (result.body() != null){
+                Result.Success(LoggedInUser(userId = "abc123", result.body()!!.name))
+            } else {
+                Result.Error(Exception())
+            }
         } catch (e: Throwable) {
             Result.Error(IOException("Error logging in", e))
         }

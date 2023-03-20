@@ -14,13 +14,15 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.mvp.cidade_organica.feature.signup.model.SignUpUser
 import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.DOCUMENT_MASK
 import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.INPUT_LENGTH
 import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.PHONE_MASK
 import com.mvp.cidade_organica.ui.theme.Teal200
+import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun SignUpScreen(navController: NavHostController) {
+fun SignUpScreen(navController: NavHostController, viewModel: SignupViewModel = getViewModel()) {
     var firstNameValue by remember { mutableStateOf(TextFieldValue("")) }
     var lastNameValue by remember { mutableStateOf(TextFieldValue("")) }
     var documentValue by remember { mutableStateOf(TextFieldValue("")) }
@@ -142,7 +144,19 @@ fun SignUpScreen(navController: NavHostController) {
         Button(modifier = Modifier
             .height(42.dp)
             .fillMaxWidth(),
-            onClick = {}) {
+            onClick = {
+                viewModel.doRegister(
+                    SignUpUser(
+                        name = firstNameValue.text,
+                        lastName = lastNameValue.text,
+                        document = documentValue.text.unmask(),
+                        phone = phoneValue.text.unmask(),
+                        email = emailValue.text,
+                        password = passwordValue.text
+                    )
+                )
+            }
+        ) {
             Text(text = "Cadastrar")
         }
     }
@@ -154,3 +168,4 @@ object SignUpDefaults {
     const val INPUT_LENGTH = 11
 }
 
+fun String.unmask() = this.filter { it.isLetterOrDigit() }

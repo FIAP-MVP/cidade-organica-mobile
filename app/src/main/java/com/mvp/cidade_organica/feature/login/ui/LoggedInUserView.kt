@@ -5,5 +5,4 @@ package com.mvp.cidade_organica.feature.login.ui
  */
 data class LoggedInUserView(
     val displayName: String
-    //... other data fields that may be accessible to the UI
 )

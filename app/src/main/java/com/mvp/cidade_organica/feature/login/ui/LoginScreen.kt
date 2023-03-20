@@ -57,15 +57,18 @@ fun SignInScreen(viewModel: LoginViewModel = getViewModel(), navController: NavH
     }
 
 
-    when (viewModel.loginResult.value) {
+    when (val result = viewModel.loginResult.value) {
 
         is LoginResult.Error -> {
         }
         is LoginResult.Success -> {
-            navController.navigate(Screen.Home.route)
-
+            navController.navigate(
+                Screen.Home.route.replace(
+                    oldValue = "{user_name}",
+                    newValue = result.user.displayName
+                )
+            )
         }
         else -> {}
     }
-
 }

@@ -14,6 +14,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.mvp.cidade_organica.Screen
+import com.mvp.cidade_organica.feature.login.ui.LoginResult
 import com.mvp.cidade_organica.feature.signup.model.SignUpUser
 import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.DOCUMENT_MASK
 import com.mvp.cidade_organica.feature.signup.ui.SignUpDefaults.INPUT_LENGTH
@@ -158,6 +160,22 @@ fun SignUpScreen(navController: NavHostController, viewModel: SignupViewModel = 
             }
         ) {
             Text(text = "Cadastrar")
+        }
+
+
+        when (val result = viewModel.signUpResult.value) {
+
+            is SignUpResult.Error -> {
+            }
+            is SignUpResult.Success -> {
+                navController.navigate(
+                    Screen.Home.route.replace(
+                        oldValue = "{user_name}",
+                        newValue = result.user.displayName
+                    )
+                )
+            }
+            else -> {}
         }
     }
 }

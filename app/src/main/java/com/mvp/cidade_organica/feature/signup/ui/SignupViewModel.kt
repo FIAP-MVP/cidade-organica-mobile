@@ -13,7 +13,7 @@ import com.mvp.cidade_organica.feature.signup.model.SignUpUser
 import kotlinx.coroutines.launch
 
 sealed class SignUpResult {
-    class Success(user: LoggedInUserView) : SignUpResult()
+    class Success(val user: LoggedInUserView) : SignUpResult()
 
     class Error(code: Int) : SignUpResult()
 

@@ -3,4 +3,5 @@
     <string name="login_failed">Houve um erro ao realizar o login</string>
     <string name="invalid_username">usuário inválido</string>
     <string name="invalid_password">Senha Inválida</string>
+    <string name="store_fetch_error">Houve um erro ao consultar os lojistas</string>
 </resources>

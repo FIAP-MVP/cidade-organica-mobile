@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
 }
 
 android {
@@ -70,7 +69,6 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
     //NAVIGATION
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

@@ -5,9 +5,11 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.mvp.cidade_organica.BuildConfig
+import com.mvp.cidade_organica.feature.login.data.model.TokenRepository
 import com.mvp.cidade_organica.network.API
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -39,6 +41,15 @@ object AppModule {
             }
             OkHttpClient.Builder()
                 .addInterceptor(interceptor)
+                .addInterceptor { chain: Interceptor.Chain ->
+                    val request = chain.request().newBuilder()
+                        .header(
+                            name = "Authorization",
+                            value = "Bearer ".plus((get() as TokenRepository).retrieveToken())
+                        )
+                        .build()
+                    chain.proceed(request)
+                }
                 .build()
         }
 

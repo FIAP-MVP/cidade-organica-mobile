@@ -168,12 +168,7 @@ fun SignUpScreen(navController: NavHostController, viewModel: SignupViewModel = 
             is SignUpResult.Error -> {
             }
             is SignUpResult.Success -> {
-                navController.navigate(
-                    Screen.Home.route.replace(
-                        oldValue = "{user_name}",
-                        newValue = result.user.displayName
-                    )
-                )
+                navController.navigate(Screen.Store.route)
             }
             else -> {}
         }

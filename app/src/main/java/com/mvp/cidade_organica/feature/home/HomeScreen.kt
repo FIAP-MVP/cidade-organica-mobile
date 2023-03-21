@@ -11,12 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mvp.cidade_organica.Screen
+import com.mvp.cidade_organica.feature.store.list.ui.SellerListScreen
 
 @Composable
 fun HomeScreen(userName: String? = null, navController: NavHostController) {
 
     if (!userName.isNullOrEmpty() ) {
-        Text(text = "Olá $userName! Em breve mais novidades para você")
+        SellerListScreen(navController)
     } else {
         Column(modifier = Modifier.fillMaxWidth()) {
             Button(onClick = {
@@ -28,7 +29,9 @@ fun HomeScreen(userName: String? = null, navController: NavHostController) {
             Spacer(modifier = Modifier.height(24.dp))
 
             Button(onClick = {
-                navController.navigate(Screen.SignIn.route)
+                navController.navigate(Screen.SignUp.route){
+                    launchSingleTop = true
+                }
             }) {
                 Text(text = "Faça seu Cadastro")
             }

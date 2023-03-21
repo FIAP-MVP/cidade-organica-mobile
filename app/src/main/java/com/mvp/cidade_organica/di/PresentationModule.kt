@@ -2,6 +2,7 @@ package com.mvp.cidade_organica.di
 
 import com.mvp.cidade_organica.feature.login.ui.LoginViewModel
 import com.mvp.cidade_organica.feature.signup.ui.SignupViewModel
+import com.mvp.cidade_organica.feature.store.StoreViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -11,8 +12,12 @@ object PresentationModule {
             LoginViewModel(loginRepository = get())
         }
 
-        viewModel{
+        viewModel {
             SignupViewModel(repository = get())
+        }
+
+        viewModel {
+            StoreViewModel(storeRepository = get())
         }
     }
 }

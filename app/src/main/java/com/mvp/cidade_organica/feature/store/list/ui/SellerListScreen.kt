@@ -1,7 +1,6 @@
 package com.mvp.cidade_organica.feature.store.list.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -10,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mvp.cidade_organica.feature.store.StoreResult
 import com.mvp.cidade_organica.feature.store.StoreViewModel
@@ -30,9 +30,13 @@ fun StoreList(viewModel: StoreViewModel = koinViewModel()){
     val lazyStores = viewModel.stores
     when (val result = lazyStores.value) {
         is StoreResult.Success -> {
-            LazyColumn(Modifier.fillMaxWidth()) {
+            LazyColumn(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)) {
                 items(result.stores) { store ->
                     StoreItem(store = store)
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
         }

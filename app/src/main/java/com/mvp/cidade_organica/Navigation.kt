@@ -14,7 +14,7 @@ import com.mvp.cidade_organica.feature.store.list.ui.SellerListScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = Screen.Store.route) {
+    NavHost(navController, startDestination = Screen.Home.route) {
         composable(route = Screen.SignIn.route) { SignInScreen(navController = navController) }
         composable(route = Screen.SignUp.route) { SignUpScreen(navController = navController) }
         composable(route = Screen.Store.route) { SellerListScreen(navController = navController) }
